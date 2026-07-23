@@ -38,9 +38,9 @@ app.post('/api/crear-preferencia', async (req, res) => {
     body: {
         items: itemsMP,
         backUrls: {
-            success: "http://127.0.0.1:5500/index.html?status=success",
-            failure: "http://127.0.0.1:5500/index.html?status=failure",
-            pending: "http://127.0.0.1:5500/index.html?status=pending"
+            success: 'https://storeluna.vercel.app/success.html',
+            failure: 'https://storeluna.vercel.app/failure.html',
+            pending: 'https://storeluna.vercel.app/pending.html'
         },
         autoReturn: "approved"
     }
