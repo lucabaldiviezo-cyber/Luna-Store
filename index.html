@@ -1860,11 +1860,9 @@
 
     try {
         // 2. Enviamos los datos del cliente y el carrito a nuestro servidor
-        const respuesta = await fetch('http://localhost:3000/api/crear-preferencia', {
+        const respuesta = await fetch('https://luna-store-3ubu.onrender.com/api/crear-preferencia', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 cliente: clienteData,
                 items: carrito // Tu arreglo/variable del carrito de compras
@@ -1874,18 +1872,14 @@
         const data = await respuesta.json();
 
         if (data.init_point) {
-            // 3. Redirigimos al usuario a la pantalla de pago de Mercado Pago
-            window.location.href = data.init_point;
-        } else {
-            alert("Ocurrió un error al generar el pago. Revisa la consola.");
-            console.error(data);
-            btnFinish.innerText = textoOriginal;
-            btnFinish.disabled = false;
+            window.location.href = data.init_point; // Redirige a Mercado Pago
         }
 
     } catch (error) {
-        console.error("Error conectando al servidor:", error);
-        alert("No se pudo conectar con el servidor backend. Asegúrate de que esté corriendo.");
+        console.error("Error al procesar la compra:", error);
+        alert("Hubo un error al conectar con el servidor.");
+    } finally {
+        // Restauramos el estado original del botón
         btnFinish.innerText = textoOriginal;
         btnFinish.disabled = false;
     }
