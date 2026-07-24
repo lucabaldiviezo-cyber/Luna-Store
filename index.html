@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luna Lunatica</title>
+    <title>Luna Lunatica | Tienda Multirrubro</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
         }
 
         /* ==========================================================================
-           NUEVAS CLASES PARA ANIMACIÓN CON SCROLL (INTERSECTION OBSERVER)
+           ANIMACIÓN CON SCROLL (INTERSECTION OBSERVER)
            ========================================================================== */
         .reveal-element {
             opacity: 0;
@@ -56,7 +56,7 @@
         }
 
         /* ==========================================================================
-           ANIMACIÓN DE ENTRADA (PRELOADER PROFESIONAL)
+           PRELOADER PROFESIONAL
            ========================================================================== */
         #preloader {
             position: fixed;
@@ -89,6 +89,7 @@
 
         .loaded #preloader {
             transform: translateY(-100%);
+            pointer-events: none;
         }
 
         /* ==========================================================================
@@ -236,7 +237,7 @@
         }
 
         /* ==========================================================================
-           NAV MENU
+           NAV MENU MULTIRRUBRO
            ========================================================================== */
         .nav-menu ul {
             display: flex;
@@ -305,7 +306,7 @@
         }
 
         /* ==========================================================================
-           SLIDER PRINCIPAL
+           SLIDER PRINCIPAL MULTIRRUBRO
            ========================================================================= */
         .slider-container {
             position: relative;
@@ -340,7 +341,7 @@
             z-index: 10;
         }
 
-        .slide-blue { background: radial-gradient(circle at 30% 50%, #1e529a 0%, #061c37 100%); }
+        .slide-blue { background: radial-gradient(circle at 30% 50%, #111827 0%, #030712 100%); }
 
         .slide-content {
             display: flex;
@@ -358,16 +359,19 @@
         }
 
         .floating-shoe {
-            width: 480px;
-            transform: rotate(-12deg) scale(0.9);
-            filter: drop-shadow(25px 40px 30px rgba(0,0,0,0.6));
+            width: 420px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            transform: rotate(-3deg) scale(0.95);
             animation: floatEffect 5s ease-in-out infinite;
         }
 
         @keyframes floatEffect {
-            0% { transform: translateY(0) rotate(-15deg); }
-            50% { transform: translateY(-20px) rotate(-12deg); }
-            100% { transform: translateY(0) rotate(-15deg); }
+            0% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-15px) rotate(-1deg); }
+            100% { transform: translateY(0) rotate(-3deg); }
         }
 
         .slide-text {
@@ -376,18 +380,18 @@
         }
 
         .slide-text h2 {
-            font-size: 85px;
+            font-size: 70px;
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 0.95;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
         }
 
         .slide-text p {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             margin-bottom: 35px;
             color: rgba(255,255,255,0.7);
         }
@@ -422,11 +426,11 @@
             z-index: -1;
         }
 
-        .btn-shop:hover { color: #000ba0; }
+        .btn-shop:hover { color: #000; }
         .btn-shop:hover::before { transform: scaleX(1); transform-origin: left; }
 
         /* ==========================================================================
-           SECCIONES CON ESTRUCTURA ANIMADA DE INTERCAMBIO
+           INTERCAMBIO DE VISTAS CON ANIMACIÓN
            ========================================================================== */
         #home-view, #catalog-view {
             transition: opacity 0.5s ease, transform 0.5s var(--cb-premium);
@@ -544,7 +548,7 @@
         .dot.active { background: #000000; transform: scale(1.2); }
 
         /* ==========================================================================
-           GRID DE CATEGORÍAS ASIMÉTRICAS
+           GRID DE CATEGORÍAS ASIMÉTRICAS MULTIRRUBRO
            ========================================================================== */
         .categories-section {
             max-width: 1200px;
@@ -560,7 +564,7 @@
 
         .category-box {
             position: relative;
-            height: 400px;
+            height: 380px;
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
@@ -572,13 +576,13 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 70%);
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 70%);
             transition: var(--transition-smooth);
             z-index: 1;
         }
 
         .category-box:hover::before {
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 100%);
         }
 
         .category-text {
@@ -590,7 +594,7 @@
         }
 
         .category-text h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -614,7 +618,7 @@
         }
 
         /* ==========================================================================
-           SECCIONES DE VITRINAS PREMIUM
+           VITRINAS MULTIRRUBRO
            ========================================================================== */
         .premium-display-section {
             max-width: 1200px;
@@ -657,7 +661,7 @@
         .premium-img-wrapper {
             position: relative;
             width: 100%;
-            height: 380px;
+            height: 350px;
             overflow: hidden;
             background-color: #f7f7f9;
         }
@@ -769,7 +773,7 @@
         }
 
         /* ==========================================================================
-           BLOQUE INTERACTIVO SHOP THE LOOK
+           BLOQUE INTERACTIVO
            ========================================================================== */
         .shop-look-section {
             max-width: 1200px;
@@ -787,7 +791,7 @@
         .look-banner {
             flex: 1.2;
             position: relative;
-            min-height: 550px;
+            min-height: 500px;
             background-size: cover;
             background-position: center;
         }
@@ -817,7 +821,7 @@
             100% { transform: scale(1.2); opacity: 0; }
         }
 
-        .hotspot-1 { top: 72%; left: 45%; }
+        .hotspot-1 { top: 45%; left: 52%; }
 
         .look-product-panel {
             flex: 1;
@@ -838,13 +842,13 @@
         }
 
         .look-product-panel h3 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             margin-bottom: 15px;
         }
 
         /* ==========================================================================
-           NEWSLETTER
+           NEWSLETTER & TOAST NOTIFICATION
            ========================================================================== */
         .newsletter-section {
             background-color: #000000;
@@ -905,6 +909,34 @@
 
         .newsletter-btn:hover {
             transform: translateX(5px);
+        }
+
+        /* TOAST DE FEEDBACK AL AGREGAR */
+        .toast-notif {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: #111111;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 14px 22px;
+            position: fixed;
+            z-index: 9999;
+            bottom: 30px;
+            right: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            border-left: 4px solid var(--neon-accent);
+        }
+
+        .toast-notif.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* ==========================================================================
@@ -977,7 +1009,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             background-color: #25d366;
             color: #ffffff;
             width: 56px;
@@ -1005,7 +1037,7 @@
         .login-modal.active { display: flex; }
         
         /* ==========================================================================
-           CARRITO LATERAL Y CHECKOUT MULTI-PASO (ESTILOS Y ESTRUCTURA REFORZADA)
+           CARRITO LATERAL Y CHECKOUT MULTI-PASO
            ========================================================================== */
         .cart-sidebar {
             position: fixed; top: 0; right: -460px; width: 440px; height: 100vh; background: white;
@@ -1172,7 +1204,7 @@
         .btn-step-next:hover { background: var(--neon-accent); color: #000; }
 
         /* ==========================================================================
-           OPTIMIZACIÓN RESPONSIVA (MOBILE FIRST DISPOSITIVOS MÓVILES)
+           OPTIMIZACIÓN RESPONSIVA
            ========================================================================== */
         @media (max-width: 768px) {
             body, html { position: relative; overflow-x: hidden; }
@@ -1194,10 +1226,10 @@
             .slide { position: relative; height: auto; min-height: auto; opacity: 1; visibility: visible; display: none; }
             .slide.active { display: flex; }
             .slide-content { flex-direction: column; text-align: center; gap: 20px; width: 90%; }
-            .floating-shoe { width: 80%; max-width: 280px; transform: rotate(-10deg) scale(1); }
+            .floating-shoe { width: 100%; max-width: 300px; height: 260px; transform: rotate(0deg) scale(1); }
 
-            .slide-text h2 { font-size: 48px; }
-            .slide-text p { font-size: 12px; letter-spacing: 4px; margin-bottom: 25px; }
+            .slide-text h2 { font-size: 42px; }
+            .slide-text p { font-size: 11px; letter-spacing: 3px; margin-bottom: 25px; }
 
             .carousel-wrapper { padding: 0 20px; }
             .carousel-arrow { display: none !important; }
@@ -1212,19 +1244,19 @@
             .premium-details h3 { font-size: 18px; }
 
             .look-container { flex-direction: column; }
-            .look-banner { min-height: 350px; }
+            .look-banner { min-height: 300px; }
             .look-product-panel { padding: 30px 20px; text-align: center; }
 
-            #catalog-view > div { flex-direction: column; gap: 30px; }
+            #catalog-view > div { flex-direction: column; gap: 20px; }
             #catalog-view aside { width: 100% !important; position: relative !important; top: 0 !important; padding-right: 0; border-bottom: 1px solid #edf2f7; padding-bottom: 20px; }
 
-            .cart-sidebar { width: 85vw; right: -87vw; padding: 25px; }
+            .cart-sidebar { width: 88vw; right: -90vw; padding: 20px; }
             .checkout-card { padding: 20px; width: 95%; }
             .form-group-grid { grid-template-columns: 1fr; }
 
             .footer-container { grid-template-columns: 1fr !important; gap: 30px; text-align: center; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 22px; }
+            .toast-notif { right: 15px; left: 15px; bottom: 20px; min-width: auto; }
         }
     </style>
 </head>
@@ -1236,8 +1268,8 @@
 
     <div class="top-bar">
         <div class="top-bar-carousel">
-            <span>6 CUOTAS SIN INTERÉS CON MERCADO PAGO • 15% OFF EN TRANSFERENCIA • ENVÍOS PREMIUM A TODO EL PAÍS •&nbsp;</span>
-            <span>6 CUOTAS SIN INTERÉS CON MERCADO PAGO • 15% OFF EN TRANSFERENCIA • ENVÍOS PREMIUM A TODO EL PAÍS •&nbsp;</span>
+            <span>6 CUOTAS SIN INTERÉS CON MERCADO PAGO • 15% OFF EN TRANSFERENCIA • ENVÍOS MULTIRRUBRO A TODO EL PAÍS •&nbsp;</span>
+            <span>6 CUOTAS SIN INTERÉS CON MERCADO PAGO • 15% OFF EN TRANSFERENCIA • ENVÍOS MULTIRRUBRO A TODO EL PAÍS •&nbsp;</span>
         </div>
     </div>
 
@@ -1246,15 +1278,15 @@
             <a href="#top" class="logo">LUNA</a>
             
             <div class="search-bar">
-                <input type="text" placeholder="Busca por producto, categoría o marca...">
+                <input type="text" id="main-search-input" placeholder="Busca tecnología, hogar, accesorios o bazar...">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
             <div class="header-actions">
                 <div class="action-item" id="account-trigger">
                     <i class="fa-regular fa-user"></i> <span>Mi cuenta</span>
                     <div class="login-modal" id="login-modal">
-                        <button style="width:100%; padding:10px; margin-bottom:5px;">Código por e-mail</button>
-                        <button style="width:100%; padding:10px; background:#000; color:#fff;">Contraseña</button>
+                        <button style="width:100%; padding:10px; margin-bottom:5px; border:1px solid #ddd; background:#fff; cursor:pointer;">Código por e-mail</button>
+                        <button style="width:100%; padding:10px; background:#000; color:#fff; border:none; cursor:pointer;">Contraseña</button>
                     </div>
                 </div>
                 <div class="action-item" id="cart-trigger">
@@ -1265,34 +1297,37 @@
         </div>
         <nav class="nav-menu">
             <ul>
-                <li class="nav-item highlight"><a href="#" id="nav-new-in">NEW IN</a></li>
-                <li class="nav-item"><a href="#" id="nav-tendencias">TENDENCIAS</a></li>
-                <li class="nav-item"><a href="#" id="nav-mujer">MUJER</a></li>
-                <li class="nav-item"><a href="#" id="nav-hombre">HOMBRE</a></li>
-                <li class="nav-item"><a href="#" id="nav-ninos">NIÑOS</a></li>
-                <li class="nav-item sale-badge"><a href="#" id="nav-sale">HASTA 70% OFF</a></li>
+                <li class="nav-item highlight"><a href="#" id="nav-lanzamientos">LANZAMIENTOS</a></li>
+                <li class="nav-item"><a href="#" id="nav-tecnologia">TECNOLOGÍA</a></li>
+                <li class="nav-item"><a href="#" id="nav-hogar">HOGAR & DECÓ</a></li>
+                <li class="nav-item"><a href="#" id="nav-accesorios">ACCESORIOS</a></li>
+                <li class="nav-item"><a href="#" id="nav-belleza">CUIDADO PERSONAL</a></li>
+                <li class="nav-item"><a href="#" id="nav-bazar">BAZAR</a></li>
+                <li class="nav-item sale-badge"><a href="#" id="nav-sale">HASTA 50% OFF</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- VISTA HOME -->
     <div id="home-view">
         <section class="slider-container">
             <div class="slider" id="main-slider">
                 <div class="slide slide-blue active">
                     <div class="slide-content">
                         <div class="slide-image-container">
-                            <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/392725/01/sv01/fnd/ARG/fmt/png" alt="Puma" class="floating-shoe">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Auriculares Inalámbricos HD" class="floating-shoe">
                         </div>
                         <div class="slide-text">
-                            <h2>FADE</h2>
-                            <p>EXTREME STYLE</p>
-                            <button class="btn-shop" onclick="agregarProductoAlCarrito('Zapatillas Puma Fade Extreme Blue', 259999, 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/392725/01/sv01/fnd/ARG/fmt/png')">Descubrir</button>
+                            <h2>TECH & SOUND</h2>
+                            <p>AUDIO DE ALTA DEFINICIÓN</p>
+                            <button class="btn-shop" onclick="agregarProductoAlCarrito('Auriculares Premium Bluetooth ANC', 89999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop')">Descubrir</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- CARRUSLE CUOTAS Y BANCOS -->
         <section class="installments-section reveal-element">
             <div class="carousel-wrapper">
                 <button class="carousel-arrow left-arrow" id="inst-prev"><i class="fa-solid fa-chevron-left"></i></button>
@@ -1309,7 +1344,7 @@
                     <div class="inst-card">
                         <div class="inst-bank-logo"><i class="fa-solid fa-handshake" style="color:#00b1ea; font-size:20px;"></i><span>mercado pago</span></div>
                         <div class="inst-content">
-                            <div class="inst-info"><h4>6 CUOTAS SIN INTERÉS</h4><p>SIN MÍNIMO</p></div>
+                            <div class="inst-info"><h4>6 CUOTAS SIN INTERÉS</h4><p>EN TODO EL CATÁLOGO</p></div>
                             <div class="inst-footer"><div class="card-brands"><span class="brand-visa">VISA</span><span class="brand-master">MC</span></div><span class="inst-legal">Ver legales</span></div>
                         </div>
                     </div>
@@ -1330,73 +1365,59 @@
                         </div>
                     </div>
 
-                    <div class="inst-card">
-                        <div class="inst-bank-logo"><span style="color:#ff5000; font-weight:800;">NaranjaX</span></div>
-                        <div class="inst-content">
-                            <div class="inst-info"><h4>6 CUOTAS SIN INTERÉS</h4><p>MÍNIMO $150.000</p></div>
-                            <div class="inst-footer"><div class="card-brands"><span style="color:#ff5000; font-weight:800;">NX</span></div><span class="inst-legal">Ver legales</span></div>
-                        </div>
-                    </div>
-
-                    <div class="inst-card">
-                        <div class="inst-bank-logo"><i class="fa-solid fa-wallet" style="color:#9efd38; background:#000; padding:2px 6px; border-radius:4px; font-weight:900;">modo</i></div>
-                        <div class="inst-content">
-                            <div class="inst-info"><h4>HASTA 3 CUOTAS SIN INTERÉS</h4><p>SIN DESCUENTO</p></div>
-                            <div class="inst-footer"><div class="card-brands"><span class="brand-visa">VISA</span><span class="brand-master">MC</span><span class="brand-amex">AMEX</span></div><span class="inst-legal">Ver legales</span></div>
-                        </div>
-                    </div>
-
                 </div>
                 <button class="carousel-arrow right-arrow" id="inst-next"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <div class="carousel-dots" id="carousel-dots-container"></div>
         </section>
 
+        <!-- CATEGORÍAS ASIMÉTRICAS MULTIRRUBRO -->
         <section class="categories-section reveal-element">
             <div class="categories-grid">
-                <div class="category-box" id="box-urbano" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600&auto=format&fit=crop');">
+                <div class="category-box" id="box-tech" onclick="mostrarCategoria('TECNOLOGÍA')" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop');">
                     <div class="category-text">
-                        <h3>Urbano</h3>
-                        <span class="category-link">Ver catálogo</span>
+                        <h3>Tecnología</h3>
+                        <span class="category-link">Ver gadgets</span>
                     </div>
                 </div>
-                <div class="category-box" id="box-hoodies" style="background-image: url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop');">
+                <div class="category-box" id="box-hogar" onclick="mostrarCategoria('HOGAR & DECÓ')" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=600&auto=format&fit=crop');">
                     <div class="category-text">
-                        <h3>Hoodies</h3>
-                        <span class="category-link">Ver más</span>
+                        <h3>Hogar & Decó</h3>
+                        <span class="category-link">Explorar ambiente</span>
                     </div>
                 </div>
-                <div class="category-box" id="box-premium" style="background-image: url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=600&auto=format&fit=crop');">
+                <div class="category-box" id="box-accesorios" onclick="mostrarCategoria('ACCESORIOS')" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop');">
                     <div class="category-text">
-                        <h3>Premium Drops</h3>
-                        <span class="category-link">Ver lanzamientos</span>
+                        <h3>Accesorios</h3>
+                        <span class="category-link">Ver coleccionables</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- DESTACADOS MULTIRRUBRO -->
         <section class="premium-display-section reveal-element">
-            <h2 class="section-title">Sneakers</h2>
+            <h2 class="section-title">Productos Destacados</h2>
             <div class="premium-display-grid">
                 
                 <div class="premium-card">
                     <div class="premium-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" alt="Nike Air Max Classic">
-                        <span class="badge-premium-tag">Exclusive Drop</span>
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" alt="Auriculares Bluetooth Pro">
+                        <span class="badge-premium-tag">Tech Drop</span>
                     </div>
                     <div class="premium-details">
-                        <h3>Zapatillas Nike Air Max Performance</h3>
+                        <h3>Auriculares Premium Bluetooth ANC</h3>
                         <div class="premium-items-list">
-                            <span class="premium-item-tag">Suela React</span>
-                            <span class="premium-item-tag">Mesh Respirable</span>
-                            <span class="premium-item-tag">Limited Edition</span>
+                            <span class="premium-item-tag">Cancelación de Ruido</span>
+                            <span class="premium-item-tag">Batería 30hs</span>
+                            <span class="premium-item-tag">Audio espacial HD</span>
                         </div>
                         <div class="premium-action-bar">
                             <div>
-                                <p class="price">$249.999,00</p>
-                                <p class="sub-price">6 cuotas s/interés de $41.666,50</p>
+                                <p class="price">$89.999,00</p>
+                                <p class="sub-price">6 cuotas s/interés de $14.999,83</p>
                             </div>
-                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Nike Air Max Performance', 249999, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop')">
+                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Auriculares Premium Bluetooth ANC', 89999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop')">
                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
                             </button>
                         </div>
@@ -1405,22 +1426,22 @@
 
                 <div class="premium-card">
                     <div class="premium-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=600&auto=format&fit=crop" alt="Adidas Retro Future">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" alt="Smartwatch Minimalista">
                         <span class="badge-premium-tag">Trending</span>
                     </div>
                     <div class="premium-details">
-                        <h3>Zapatillas Adidas Originals Forum Low</h3>
+                        <h3>Smartwatch Smart-Sync Black Edition</h3>
                         <div class="premium-items-list">
-                            <span class="premium-item-tag">Cuero Premium</span>
-                            <span class="premium-item-tag">Correa Ajustable</span>
-                            <span class="premium-item-tag">Vintage Style</span>
+                            <span class="premium-item-tag">Pantalla AMOLED</span>
+                            <span class="premium-item-tag">Ritmo Cardíaco</span>
+                            <span class="premium-item-tag">Resistente al Agua</span>
                         </div>
                         <div class="premium-action-bar">
                             <div>
-                                <p class="price">$219.999,00</p>
-                                <p class="sub-price">6 cuotas s/interés de $36.666,50</p>
+                                <p class="price">$64.999,00</p>
+                                <p class="sub-price">6 cuotas s/interés de $10.833,16</p>
                             </div>
-                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Adidas Originals Forum Low', 219999, 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=600&auto=format&fit=crop')">
+                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Smartwatch Smart-Sync Black Edition', 64999, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop')">
                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
                             </button>
                         </div>
@@ -1430,115 +1451,50 @@
             </div>
         </section>
 
-        <section class="premium-display-section reveal-element">
-            <h2 class="section-title">Looks destacados</h2>
-            <div class="premium-display-grid">
-                
-                <div class="premium-card">
-                    <div class="premium-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop" alt="Streetwear Urbano">
-                        <span class="badge-premium-tag">Streetwear Edition</span>
-                    </div>
-                    <div class="premium-details">
-                        <h3>Look #01 • Casual Cyberpunk</h3>
-                        <div class="premium-items-list">
-                            <span class="premium-item-tag"><i class="fa-solid fa-tag"></i> Hoodie Oversize Black</span>
-                            <span class="premium-item-tag"><i class="fa-solid fa-tag"></i> Pantalón Cargo Tech</span>
-                            <span class="premium-item-tag"><i class="fa-solid fa-tag"></i> Sneakers Fade Extreme</span>
-                        </div>
-                        <div class="premium-action-bar">
-                            <div>
-                                <p class="premium-total-label">PRECIO DEL LOOK</p>
-                                <p class="price">$389.997,00</p>
-                            </div>
-                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Look Casual Cyberpunk', 389997, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop', true)">
-                                LLEVAR OUTFIT <i class="fa-solid fa-bag-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="premium-card">
-                    <div class="premium-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop" alt="Retro Premium">
-                        <span class="badge-premium-tag">Retro Minimal</span>
-                    </div>
-                    <div class="premium-details">
-                        <h3>Look #02 • Vintage Aesthetic</h3>
-                        <div class="premium-items-list">
-                            <span class="premium-item-tag"><i class="fa-solid fa-tag"></i> Campera Denim Classic</span>
-                            <span class="premium-item-tag"><i class="fa-solid fa-tag"></i> Remera Heavyweight White</span>
-                            <span class="premium-item-tag"><i class="fa-solid fa-tag"></i> Cali Pro Retro Metallic</span>
-                        </div>
-                        <div class="premium-action-bar">
-                            <div>
-                                <p class="premium-total-label">PRECIO DEL LOOK</p>
-                                <p class="price">$299.998,00</p>
-                            </div>
-                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Look Vintage Aesthetic', 299998, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop', true)">
-                                LLEVAR OUTFIT <i class="fa-solid fa-bag-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+        <!-- SECCIÓN DE SELECCIÓN RECOMENDADA -->
         <section class="shop-look-section reveal-element">
-            <h2 class="section-title">Completa tu look</h2>
+            <h2 class="section-title">Recomendación de la Semana</h2>
             <div class="look-container">
-                <div class="look-banner" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop');">
+                <div class="look-banner" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop');">
                     <div class="hotspot hotspot-1" title="Ver producto"></div>
                 </div>
                 <div class="look-product-panel">
-                    <h4>Completá el outfit</h4>
-                    <h3>Zapatillas Puma Cali Pro Retro Metallic</h3>
-                    <p class="price" style="font-size:24px; margin-bottom:10px;">$149.999,00</p>
-                    <p class="sub-price" style="margin-bottom:30px;">Llevatelas en 6 cuotas de $24.999,83</p>
-                    <button style="background:#000; color:#fff; padding:16px; border:none; font-weight:800; cursor:pointer; border-radius:4px;" onclick="agregarProductoAlCarrito('Puma Cali Pro Retro', 149999, 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop')">AÑADIR PRODUCTO AL LOOK</button>
+                    <h4>Bazar & Cuidados</h4>
+                    <h3>Humidificador Ultramoderno & Difusor Aromático</h3>
+                    <p class="price" style="font-size:24px; margin-bottom:10px;">$32.500,00</p>
+                    <p class="sub-price" style="margin-bottom:30px;">Llevatelo en 6 cuotas de $5.416,66</p>
+                    <button style="background:#000; color:#fff; padding:16px; border:none; font-weight:800; cursor:pointer; border-radius:4px;" onclick="agregarProductoAlCarrito('Humidificador Ultramoderno Difusor', 32500, 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop')">AÑADIR AL CARRITO</button>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- VISTA DE CATÁLOGO MULTIRRUBRO DINÁMICO -->
     <section id="catalog-view" style="display: none; max-width: 1400px; margin: 40px auto; padding: 0 20px;">
         <div style="display: flex; gap: 40px; align-items: flex-start;">
             
             <aside style="width: 280px; flex-shrink: 0; position: sticky; top: 120px; background: #fff; padding-right: 20px;">
-                <h2 id="catalog-title" style="font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 1px;">Sección</h2>
+                <h2 id="catalog-title" style="font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px;">Sección</h2>
                 
                 <div style="margin-bottom: 25px; border-bottom: 1px solid #edf2f7; padding-bottom: 20px;">
-                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Tipo de Producto</h4>
-                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Calzado</label>
-                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Hoodies</label>
-                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Remeras</label>
+                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Categoría Rápidas</h4>
+                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" checked style="margin-right: 8px;"> Ver Todos</label>
+                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Ofertas Semanales</label>
                 </div>
 
                 <div style="margin-bottom: 25px; border-bottom: 1px solid #edf2f7; padding-bottom: 20px;">
-                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Talle</h4>
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
-                        <button style="padding: 8px; background: transparent; border: 1px solid #e2e8f0; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px;">39</button>
-                        <button style="padding: 8px; background: transparent; border: 1px solid #e2e8f0; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px;">40</button>
-                        <button style="padding: 8px; background: #000; color: #fff; border: 1px solid #000; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px;">41</button>
-                        <button style="padding: 8px; background: transparent; border: 1px solid #e2e8f0; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px;">42</button>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 25px; border-bottom: 1px solid #edf2f7; padding-bottom: 20px;">
-                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Color</h4>
-                    <div style="display: flex; gap: 10px;">
-                        <span style="width: 24px; height: 24px; background: #000; border-radius: 50%; display: inline-block; cursor: pointer; border: 1px solid #e2e8f0;" title="Negro"></span>
-                        <span style="width: 24px; height: 24px; background: #fff; border-radius: 50%; display: inline-block; cursor: pointer; border: 1px solid #cbd5e0;" title="Blanco"></span>
-                        <span style="width: 24px; height: 24px; background: #1e529a; border-radius: 50%; display: inline-block; cursor: pointer; border: 1px solid #e2e8f0;" title="Azul"></span>
+                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Rango de Precio</h4>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button style="padding: 10px; background: transparent; border: 1px solid #e2e8f0; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px; text-align:left;">Hasta $30.000</button>
+                        <button style="padding: 10px; background: transparent; border: 1px solid #e2e8f0; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px; text-align:left;">$30.000 - $80.000</button>
+                        <button style="padding: 10px; background: transparent; border: 1px solid #e2e8f0; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 4px; text-align:left;">Más de $80.000</button>
                     </div>
                 </div>
 
                 <div style="margin-bottom: 25px;">
-                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Línea</h4>
-                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Premium Drops</label>
-                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Streetwear</label>
-                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Essentials</label>
+                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Disponibilidad</h4>
+                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" checked style="margin-right: 8px;"> En Stock inmediato</label>
+                    <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Envíos Gratis</label>
                 </div>
             </aside>
 
@@ -1546,7 +1502,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
                     <p style="font-size: 13px; color: #718096; font-weight: 600;" id="catalog-count">Mostrando 0 productos</p>
                     <select style="padding: 10px 16px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; font-weight: 600; outline: none; background: #fff;">
-                        <option>Destacados</option>
+                        <option>Más relevantes</option>
                         <option>Precio: Menor a Mayor</option>
                         <option>Precio: Mayor a Menor</option>
                     </select>
@@ -1558,10 +1514,11 @@
         </div>
     </section>
 
+    <!-- NEWSLETTER -->
     <section class="newsletter-section">
         <div class="newsletter-container">
             <h2>UNITE AL CLUB LUNA</h2>
-            <p>Recibí alertas instantáneas de Drops exclusivos, reposición de talles y obtené un 10% OFF directo en tu próxima compra.</p>
+            <p>Recibí alertas de nuevos ingresos multirrubro, lanzamientos de tecnología y un 10% OFF en tu primera compra.</p>
             <div class="newsletter-form">
                 <input type="email" placeholder="Ingresá tu dirección de e-mail...">
                 <button class="newsletter-btn">Suscribirse <i class="fa-solid fa-arrow-right-long"></i></button>
@@ -1573,20 +1530,20 @@
         <div class="footer-container">
             <div class="footer-logo-side">
                 <h2>LUNA</h2>
-                <p>E-commerce multimarca de calzado y lifestyle urbano premium. Entregas garantizadas con empaque reforzado en todo el país.</p>
+                <p>Tienda multirrubro online. Productos seleccionados de tecnología, bazar, hogar y lifestyle con envío asegurado.</p>
             </div>
             <div class="footer-column">
                 <h3>Asistencia</h3>
                 <ul>
-                    <li><a href="#">Guía de talles</a></li>
                     <li><a href="#">Seguimiento de envíos</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
                     <li><a href="#">Botón de Arrepentimiento</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Políticas</h3>
                 <ul>
-                    <li><a href="#">Cambios y Devoluciones</a></li>
+                    <li><a href="#">Garantía de Productos</a></li>
                     <li><a href="#">Términos del Servicio</a></li>
                     <li><a href="#">Defensa al Consumidor</a></li>
                 </ul>
@@ -1595,7 +1552,7 @@
                 <h3>Contacto</h3>
                 <ul>
                     <li><a href="#">info@lunacom.ar</a></li>
-                    <li><a href="#">Locales comerciales</a></li>
+                    <li><a href="#">Atención por WhatsApp</a></li>
                 </ul>
             </div>
         </div>
@@ -1617,7 +1574,7 @@
         </div>
         
         <div class="cart-items-container" id="cart-items-list">
-            <!-- Carga Dinámica -->
+            <!-- Carga Dinámica del Carrito -->
         </div>
 
         <div class="cart-footer">
@@ -1706,16 +1663,24 @@
         </div>
     </div>
 
+    <!-- ESTRUCTURA JS COMPLETA -->
     <script>
-        // ESTADO GLOBAL DEL CARRITO
-        let carrito = [];
+        // Cargar carrito desde LocalStorage
+        let carrito = JSON.parse(localStorage.getItem('luna_cart')) || [];
+
+        function guardarCarritoEnStorage() {
+            localStorage.setItem('luna_cart', JSON.stringify(carrito));
+        }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // LÓGICA DEL PRELOADER
+            // Cargar estado inicial del carrito
+            actualizarCarritoUI();
+
+            // PRELOADER
             setTimeout(() => {
                 document.body.classList.add("loaded");
                 initScrollAnimations();
-            }, 1200);
+            }, 1000);
 
             // Panel de Carrito y Cuenta
             const cartTrigger = document.getElementById("cart-trigger");
@@ -1735,19 +1700,6 @@
 
             accountTrigger.addEventListener("click", (e) => { e.stopPropagation(); loginModal.classList.toggle("active"); });
             document.addEventListener("click", () => loginModal.classList.remove("active"));
-
-            // Interactividad Móvil Nav
-            const navItems = document.querySelectorAll(".nav-item");
-            navItems.forEach(item => {
-                item.addEventListener("touchstart", () => {
-                    navItems.forEach(el => el.classList.remove("active-touch"));
-                    item.classList.add("active-touch");
-                }, { passive: true });
-
-                item.addEventListener("touchend", () => {
-                    setTimeout(() => { item.classList.remove("active-touch"); }, 250);
-                }, { passive: true });
-            });
 
             // Carrusel de Cuotas
             const instCarousel = document.getElementById("inst-carousel");
@@ -1780,7 +1732,7 @@
                 dots.forEach((d, i) => i === index ? d.classList.add("active") : d.classList.remove("active"));
             });
 
-            // --- LÓGICA DE CHECKOUT MULTI-PASO ---
+            // CHECKOUT MULTI-PASO
             const btnOpenCheckout = document.getElementById("btn-open-checkout");
             const checkoutModal = document.getElementById("checkout-modal");
             const closeCheckout = document.getElementById("close-checkout");
@@ -1834,57 +1786,59 @@
                 document.getElementById(`step-ind-${to}`).classList.add("active");
             }
 
+            // INTEGRACIÓN ROBUSTA CON MERCADO PAGO / BACKEND
             document.getElementById("btn-finish-order").addEventListener("click", async () => {
-    
-    // 1. Recopilamos la información que el cliente ingresó en el checkout
-    const clienteData = {
-        nombre: document.getElementById("chk-name").value,
-        apellido: document.getElementById("chk-lastname").value,
-        email: document.getElementById("chk-email").value,
-        direccion: document.getElementById("chk-address").value,
-        cp: document.getElementById("chk-zip").value
-    };
+                const clienteData = {
+                    nombre: document.getElementById("chk-name").value,
+                    apellido: document.getElementById("chk-lastname").value,
+                    email: document.getElementById("chk-email").value,
+                    direccion: document.getElementById("chk-address").value,
+                    cp: document.getElementById("chk-zip").value
+                };
 
-    // Validación simple para asegurar que ingresó datos mínimos
-    if (!clienteData.nombre || !clienteData.email) {
-        alert("Por favor, completa al menos tu nombre y correo electrónico.");
-        return;
-    }
+                if (!clienteData.nombre || !clienteData.email) {
+                    alert("Por favor, completa al menos tu nombre y correo electrónico.");
+                    return;
+                }
 
-    const btnFinish = document.getElementById("btn-finish-order");
-    const textoOriginal = btnFinish.innerText;
-    
-    // Cambiamos el estado del botón para indicar que está procesando
-    btnFinish.innerText = "PROCESANDO...";
-    btnFinish.disabled = true;
+                const btnFinish = document.getElementById("btn-finish-order");
+                const textoOriginal = btnFinish.innerText;
+                
+                btnFinish.innerText = "PROCESANDO...";
+                btnFinish.disabled = true;
 
-    try {
-        // 2. Enviamos los datos del cliente y el carrito a nuestro servidor
-        const respuesta = await fetch('https://luna-store-3ubu.onrender.com/api/crear-preferencia', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                cliente: clienteData,
-                items: carrito // Tu arreglo/variable del carrito de compras
-            })
-        });
+                try {
+                    const respuesta = await fetch('https://luna-store-3ubu.onrender.com/api/crear-preferencia', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            cliente: clienteData,
+                            items: carrito
+                        })
+                    });
 
-        const data = await respuesta.json();
+                    if (!respuesta.ok) {
+                        throw new Error(`Estado HTTP: ${respuesta.status}`);
+                    }
 
-        if (data.init_point) {
-            window.location.href = data.init_point; // Redirige a Mercado Pago
-        }
+                    const data = await respuesta.json();
 
-    } catch (error) {
-        console.error("Error al procesar la compra:", error);
-        alert("Hubo un error al conectar con el servidor.");
-    } finally {
-        // Restauramos el estado original del botón
-        btnFinish.innerText = textoOriginal;
-        btnFinish.disabled = false;
-    }
-});
-            // --- LÓGICA DE DETECCIÓN DE SCROLL (REVEAL ANIMATIONS) ---
+                    if (data.init_point) {
+                        window.location.href = data.init_point;
+                    } else {
+                        alert("Ocurrió un inconveniente al generar la pasarela de pago.");
+                    }
+
+                } catch (error) {
+                    console.error("Error en Checkout:", error);
+                    alert("No se pudo conectar con el servidor de pagos. Inténtalo nuevamente en unos instantes.");
+                } finally {
+                    btnFinish.innerText = textoOriginal;
+                    btnFinish.disabled = false;
+                }
+            });
+
+            // DETECCIÓN DE SCROLL (REVEAL)
             function initScrollAnimations() {
                 const revealElements = document.querySelectorAll(".reveal-element");
                 const observerOptions = { root: null, threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
@@ -1901,20 +1855,23 @@
                 revealElements.forEach(el => scrollObserver.observe(el));
             }
 
-            // --- LÓGICA INTEGRADA DE CATÁLOGO Y CAMBIOS DE SECCIÓN CON ANIMACIÓN ---
+            // BASE DE DATOS MULTIRRUBRO
+            const dbProductos = [
+                { id: 101, categoria: "TECNOLOGÍA", nombre: "Auriculares Premium Bluetooth ANC", precio: 89999, tag: "Tech Drop", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop", specs: ["Cancelación de Ruido", "Batería 30hs", "Audio HD"] },
+                { id: 102, categoria: "TECNOLOGÍA", nombre: "Smartwatch Smart-Sync Black Edition", precio: 64999, tag: "Trending", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop", specs: ["AMOLED", "Resistente al Agua", "Smart Sync"] },
+                { id: 103, categoria: "HOGAR & DECÓ", nombre: "Humidificador Ultramoderno Difusor", precio: 32500, tag: "Home Essentials", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop", specs: ["Luces LED RGB", "Silencioso", "Aromaterapia"] },
+                { id: 104, categoria: "ACCESORIOS", nombre: "Lentes de Sol Vintage Y2K Polarizados", precio: 18900, tag: "Style Drop", img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600&auto=format&fit=crop", specs: ["Protección UV400", "Marco Ultraligero", "Estuche Incluido"] },
+                { id: 105, categoria: "BAZAR", nombre: "Botella Térmica de Acero Inoxidable 750ml", precio: 22400, tag: "Bazar Top", img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=600&auto=format&fit=crop", specs: ["Frio 24hs / Calor 12hs", "Libre de BPA", "Anti-derrames"] },
+                { id: 106, categoria: "CUIDADO PERSONAL", nombre: "Kit Skincare Massage Roller & Facial Care", precio: 28900, tag: "Beauty Line", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=600&auto=format&fit=crop", specs: ["Piedra Jade Natural", "Revitalizante", "Ergonómico"] }
+            ];
+
             const homeView = document.getElementById("home-view");
             const catalogView = document.getElementById("catalog-view");
             const catalogTitle = document.getElementById("catalog-title");
             const catalogCount = document.getElementById("catalog-count");
             const catalogProductsGrid = document.getElementById("catalog-products-grid");
 
-            const dbProductos = [
-                { id: 1, categoria: "HOMBRE", nombre: "Zapatillas Nike Air Max Performance", precio: 249999, tag: "Exclusive Drop", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop", specs: ["Suela React", "Mesh Respirable", "Limited Edition"] },
-                { id: 2, categoria: "MUJER", nombre: "Zapatillas Adidas Originals Forum Low", precio: 219999, tag: "Trending", img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=600&auto=format&fit=crop", specs: ["Cuero Premium", "Correa Ajustable", "Vintage Style"] },
-                { id: 3, categoria: "HOMBRE", nombre: "Zapatillas Puma Fade Extreme Blue", precio: 259999, tag: "Premium Drop", img: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/392725/01/sv01/fnd/ARG/fmt/png", specs: ["Exclusive Line", "Cubic Comfort"] }
-            ];
-
-            function mostrarCategoria(categoria) {
+            window.mostrarCategoria = function(categoria) {
                 const vistaActiva = homeView.style.display !== "none" ? homeView : catalogView;
                 vistaActiva.classList.add("view-hidden-state");
 
@@ -1923,12 +1880,16 @@
                     catalogView.style.display = "block";
                     catalogTitle.innerText = categoria;
                     
-                    const productosFiltrados = dbProductos.filter(p => p.categoria === categoria);
-                    catalogCount.innerText = `Mostrando ${productosFiltrados.length} productos`;
+                    let productosFiltrados = dbProductos;
+                    if (categoria !== "LANZAMIENTOS" && categoria !== "HASTA 50% OFF") {
+                        productosFiltrados = dbProductos.filter(p => p.categoria === categoria);
+                    }
                     
+                    catalogCount.innerText = `Mostrando ${productosFiltrados.length} productos`;
                     catalogProductsGrid.innerHTML = "";
+
                     if(productosFiltrados.length === 0) {
-                        catalogProductsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 60px; font-weight: 700; font-size: 14px; letter-spacing: 1px;">PRÓXIMAMENTE MÁS CONTENIDO EN ESTA SECCIÓN.</p>`;
+                        catalogProductsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 60px; font-weight: 700; font-size: 14px; letter-spacing: 1px;">PRÓXIMAMENTE MÁS CONTENIDO EN ESTA SECCIÓN MULTIRRUBRO.</p>`;
                     } else {
                         productosFiltrados.forEach((prod, index) => {
                             const cardHtml = `
@@ -1945,7 +1906,7 @@
                                         <div class="premium-action-bar">
                                             <div>
                                                 <p class="price">$${prod.precio.toLocaleString('es-AR')},00</p>
-                                                <p class="sub-price">6 cuotas s/interés de $${Math.round(prod.precio / 6).toLocaleString('es-AR')},50</p>
+                                                <p class="sub-price">6 cuotas s/interés de $${Math.round(prod.precio / 6).toLocaleString('es-AR')},00</p>
                                             </div>
                                             <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('${prod.nombre}', ${prod.precio}, '${prod.img}')">
                                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
@@ -1967,15 +1928,16 @@
                     }, 50);
 
                 }, 350);
-            }
+            };
 
             // Listeners Menu
-            document.getElementById("nav-hombre").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("HOMBRE"); });
-            document.getElementById("nav-mujer").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("MUJER"); });
-            document.getElementById("nav-ninos").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("NIÑOS"); });
-            document.getElementById("nav-new-in").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("NEW IN"); });
-            document.getElementById("nav-tendencias").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("TENDENCIAS"); });
-            document.getElementById("nav-sale").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("70% OFF"); });
+            document.getElementById("nav-tecnologia").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("TECNOLOGÍA"); });
+            document.getElementById("nav-hogar").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("HOGAR & DECÓ"); });
+            document.getElementById("nav-accesorios").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("ACCESORIOS"); });
+            document.getElementById("nav-belleza").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("CUIDADO PERSONAL"); });
+            document.getElementById("nav-bazar").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("BAZAR"); });
+            document.getElementById("nav-lanzamientos").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("LANZAMIENTOS"); });
+            document.getElementById("nav-sale").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("HASTA 50% OFF"); });
 
             // Volver con transición al Inicio (Logo LUNA)
             document.querySelector(".logo").addEventListener("click", (e) => {
@@ -1994,18 +1956,31 @@
             });
         });
 
-        // FUNCIONES GLOBALES DEL CARRITO RESTRUCTURADO
-        function agregarProductoAlCarrito(nombre, precio, img = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop', esLook = false) {
+        // NOTIFICACIÓN TOAST
+        function mostrarToast(mensaje) {
+            let toast = document.getElementById("toast-notif");
+            if(!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast-notif";
+                toast.className = "toast-notif";
+                document.body.appendChild(toast);
+            }
+            toast.innerText = mensaje;
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 2800);
+        }
+
+        // FUNCIONES GLOBALES DEL CARRITO
+        function agregarProductoAlCarrito(nombre, precio, img) {
             const index = carrito.findIndex(item => item.nombre === nombre);
             if(index > -1) {
                 carrito[index].cantidad += 1;
             } else {
                 carrito.push({ nombre, precio, img, cantidad: 1 });
             }
+            guardarCarritoEnStorage();
             actualizarCarritoUI();
-            
-            document.getElementById("cart-sidebar").classList.add("open");
-            document.getElementById("sidebar-overlay").classList.add("active");
+            mostrarToast(`¡${nombre} agregado a la bolsa!`);
         }
 
         function cambiarCantidad(index, delta) {
@@ -2013,6 +1988,7 @@
             if(carrito[index].cantidad <= 0) {
                 carrito.splice(index, 1);
             }
+            guardarCarritoEnStorage();
             actualizarCarritoUI();
         }
 
@@ -2025,6 +2001,7 @@
             const totalElement = document.getElementById("cart-total-price");
             const badgeCount = document.getElementById("cart-count");
 
+            if(!listContainer) return;
             listContainer.innerHTML = "";
             let totalUnidades = 0;
 
