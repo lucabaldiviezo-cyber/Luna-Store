@@ -3,89 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda Luna | Productos Virales y Tendencias</title>
+  <title>LUNA STORE | Tendencias & Virales</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .hero-section {
-      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    /* Estilos minimalistas y limpios */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #111;
     }
-    .card-img-top {
-      height: 220px;
+
+    .navbar-brand {
+      letter-spacing: 1.5px;
+    }
+
+    .hero-banner {
+      background-color: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+      padding: 60px 20px;
+    }
+
+    .btn-category {
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      color: #374151;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn-category:hover, .btn-category.active {
+      background: #111827;
+      color: #ffffff;
+      border-color: #111827;
+    }
+
+    .card-product {
+      border: none;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card-product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-img-container {
+      height: 240px;
+      overflow: hidden;
+      background-color: #f3f4f6;
+    }
+
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+    }
+
+    .btn-add-cart {
+      background-color: #111827;
+      color: #ffffff;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #1f2937;
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <!-- Navegación Superior -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-3">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">🌙 TIENDA LUNA</a>
-      <button class="btn btn-outline-light position-relative" type="button" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+      <a class="navbar-brand fw-bold text-dark fs-4" href="#">LUNA STORE</a>
+      
+      <button class="btn btn-outline-dark position-relative rounded-pill px-3" type="button" data-bs-toggle="modal" data-bs-target="#modalCarrito">
         🛒 Carrito
-        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
       </button>
     </div>
   </nav>
 
-  <!-- Banner / Hero -->
-  <header class="hero-section text-center py-5 text-white">
-    <div class="container my-4">
-      <h1 class="display-4 fw-bold">🔥 Productos Virales & Tendencias</h1>
-      <p class="lead">Lo más buscado e innovador de internet a un clic de distancia.</p>
-      <a href="#catalogo" class="btn btn-primary btn-lg mt-2 fw-semibold">Explorar Catálogo</a>
+  <!-- Banner Limpio -->
+  <header class="hero-banner text-center">
+    <div class="container max-w-md">
+      <h1 class="fw-bold display-6 mb-2">Productos Virales & Tendencias</h1>
+      <p class="text-muted mb-0">Lo más buscado de internet seleccionado en un solo lugar.</p>
     </div>
   </header>
 
-  <!-- Filtros por Categoría -->
-  <section class="container my-4 text-center">
+  <!-- Categorías / Filtros -->
+  <section class="container my-4">
     <div class="d-flex justify-content-center gap-2 flex-wrap">
-      <button class="btn btn-outline-dark active" onclick="filtrarCategoria('todos')">🌐 Todos</button>
-      <button class="btn btn-outline-dark" onclick="filtrarCategoria('gadgets')">⚡ Gadgets & Tecno</button>
-      <button class="btn btn-outline-dark" onclick="filtrarCategoria('hogar')">🏠 Hogar & Deco</button>
-      <button class="btn btn-outline-dark" onclick="filtrarCategoria('tendencia')">🔥 Más Vendidos</button>
+      <button class="btn-category active" onclick="filtrarCategoria('todos')">Todos</button>
+      <button class="btn-category" onclick="filtrarCategoria('gadgets')">Gadgets</button>
+      <button class="btn-category" onclick="filtrarCategoria('hogar')">Hogar & Deco</button>
+      <button class="btn-category" onclick="filtrarCategoria('tendencia')">Más Vendidos</button>
     </div>
   </section>
 
   <!-- Catálogo de Productos -->
-  <main id="catalogo" class="container my-5">
+  <main class="container my-4">
     <div class="row g-4" id="contenedor-productos">
-      <!-- Los productos se cargarán dinámicamente desde JS -->
+      <!-- Carga dinámica de productos -->
     </div>
   </main>
 
   <!-- Modal del Carrito -->
   <div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold">🛒 Tu Carrito de Compras</h5>
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Tu Carrito</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <ul id="lista-carrito" class="list-group mb-3">
-            <li class="list-group-item text-center text-muted">El carrito está vacío</li>
+          <ul id="lista-carrito" class="list-group list-group-flush mb-3">
+            <li class="list-group-item text-center text-muted border-0 py-4">El carrito está vacío</li>
           </ul>
-          <div class="d-flex justify-content-between fw-bold fs-5">
+          <div class="d-flex justify-content-between fw-bold fs-5 pt-3 border-top">
             <span>Total:</span>
             <span id="total-carrito">$0</span>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button id="btn-finish-order" type="button" class="btn btn-success fw-bold w-100 mt-2">Finalizar Compra</button>
+        <div class="modal-footer border-0">
+          <button id="btn-finish-order" type="button" class="btn btn-dark fw-semibold w-100 py-2">Finalizar Compra</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Script Bootstrap -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Lógica JavaScript -->
   <script>
-    // 1. Catálogo actualizado de productos virales
+    // 1. Arreglo de Productos Virales
     const productos = [
       {
         id: 1,
@@ -119,7 +184,7 @@
 
     let carrito = [];
 
-    // 2. Renderizar productos en pantalla
+    // 2. Renderizar catálogo
     function cargarProductos(lista = productos) {
       const contenedor = document.getElementById("contenedor-productos");
       if (!contenedor) return;
@@ -130,13 +195,15 @@
         const col = document.createElement("div");
         col.className = "col-md-4 col-sm-6";
         col.innerHTML = `
-          <div class="card h-100 shadow-sm border-0">
-            <img src="${p.imagen}" class="card-img-top" alt="${p.nombre}">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title fw-bold">${p.nombre}</h5>
-              <p class="card-text text-primary fw-bold fs-5 mb-3">$${p.precio.toLocaleString('es-AR')}</p>
-              <button onclick="agregarAlCarrito(${p.id})" class="btn btn-dark mt-auto w-100 fw-semibold">
-                🛒 Agregar al Carrito
+          <div class="card card-product h-100">
+            <div class="card-img-container">
+              <img src="${p.imagen}" alt="${p.nombre}">
+            </div>
+            <div class="card-body d-flex flex-column p-3">
+              <h6 class="card-title fw-bold text-dark mb-1">${p.nombre}</h6>
+              <p class="text-muted small mb-3">$${p.precio.toLocaleString('es-AR')}</p>
+              <button onclick="agregarAlCarrito(${p.id})" class="btn btn-add-cart mt-auto w-100 border-0">
+                Agregar al carrito
               </button>
             </div>
           </div>
@@ -145,8 +212,17 @@
       });
     }
 
-    // 3. Filtrar categorías
+    // 3. Filtrar por categoría
     function filtrarCategoria(cat) {
+      const botones = document.querySelectorAll('.btn-category');
+      botones.forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(cat) || (cat === 'todos' && btn.innerText === 'Todos')) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
       if (cat === 'todos') {
         cargarProductos(productos);
       } else {
@@ -155,7 +231,7 @@
       }
     }
 
-    // 4. Agregar al carrito
+    // 4. Lógica del Carrito
     function agregarAlCarrito(id) {
       const prod = productos.find(p => p.id === id);
       if (prod) {
@@ -164,7 +240,6 @@
       }
     }
 
-    // 5. Actualizar interfaz del carrito
     function actualizarCarritoUI() {
       const lista = document.getElementById("lista-carrito");
       const totalSpan = document.getElementById("total-carrito");
@@ -173,7 +248,7 @@
       badgeCount.innerText = carrito.length;
 
       if (carrito.length === 0) {
-        lista.innerHTML = '<li class="list-group-item text-center text-muted">El carrito está vacío</li>';
+        lista.innerHTML = '<li class="list-group-item text-center text-muted border-0 py-4">El carrito está vacío</li>';
         totalSpan.innerText = "$0";
         return;
       }
@@ -181,13 +256,13 @@
       lista.innerHTML = "";
       let total = 0;
 
-      carrito.forEach((p, index) => {
+      carrito.forEach((p) => {
         total += p.precio;
         const item = document.createElement("li");
-        item.className = "list-group-item d-flex justify-content-between align-items-center";
+        item.className = "list-group-item d-flex justify-content-between align-items-center border-bottom px-0 py-2";
         item.innerHTML = `
-          <span>${p.nombre}</span>
-          <span class="fw-bold">$${p.precio.toLocaleString('es-AR')}</span>
+          <span class="small fw-semibold">${p.nombre}</span>
+          <span class="small text-muted">$${p.precio.toLocaleString('es-AR')}</span>
         `;
         lista.appendChild(item);
       });
@@ -195,7 +270,7 @@
       totalSpan.innerText = `$${total.toLocaleString('es-AR')}`;
     }
 
-    // 6. Conexión con Mercado Pago (Backend en Render)
+    // 5. Checkout con Mercado Pago (Backend en Render)
     document.addEventListener("DOMContentLoaded", () => {
       cargarProductos();
 
@@ -210,15 +285,13 @@
           const textoOriginal = btnFinish.innerText;
 
           try {
-            btnFinish.innerText = "Cargando...";
+            btnFinish.innerText = "Procesando...";
             btnFinish.disabled = true;
 
             const respuesta = await fetch('https://luna-store-3ubu.onrender.com/api/crear-preferencia', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                items: carrito
-              })
+              body: JSON.stringify({ items: carrito })
             });
 
             const data = await respuesta.json();
@@ -226,12 +299,12 @@
             if (data.init_point) {
               window.location.href = data.init_point;
             } else {
-              alert("No se pudo iniciar el proceso de pago.");
+              alert("No se pudo iniciar el pago.");
             }
 
           } catch (error) {
             console.error("Error al procesar la compra:", error);
-            alert("Hubo un error al conectar con el servidor.");
+            alert("Error de conexión con el servidor.");
           } finally {
             btnFinish.innerText = textoOriginal;
             btnFinish.disabled = false;
