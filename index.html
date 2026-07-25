@@ -354,6 +354,7 @@
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             transform: rotate(-3deg) scale(0.95);
             animation: floatEffect 5s ease-in-out infinite;
+            cursor: pointer;
         }
 
         @keyframes floatEffect {
@@ -630,6 +631,7 @@
             transition: var(--transition-smooth);
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .premium-card:hover {
@@ -1000,7 +1002,7 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        /* CARRITO FLOTANTE EN PANTALLA TODO EL TIEMPO AL AGREGAR */
+        /* CARRITO FLOTANTE MEJORADO - ANIMACIÓN FLUIDA Y MINIMALISTA */
         .cart-float {
             background-color: #000000;
             color: #ffffff;
@@ -1011,23 +1013,27 @@
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             cursor: pointer;
             position: relative;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s, visibility 0.3s;
             opacity: 0;
             visibility: hidden;
-            transform: scale(0.8);
+            transform: translateY(20px) scale(0.9);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        visibility 0.5s ease;
+            will-change: transform, opacity;
         }
 
         .cart-float.visible {
             opacity: 1;
             visibility: visible;
-            transform: scale(1);
+            transform: translateY(0) scale(1);
         }
 
         .cart-float:hover {
-            transform: scale(1.1);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.35);
         }
 
         .cart-float-badge {
@@ -1045,6 +1051,17 @@
             align-items: center;
             justify-content: center;
             border: 2px solid #000;
+            transition: transform 0.3s var(--cb-bounce);
+        }
+
+        .cart-float.visible .cart-float-badge {
+            animation: popBadge 0.4s var(--cb-bounce);
+        }
+
+        @keyframes popBadge {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
         .login-modal {
@@ -1146,6 +1163,94 @@
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); display: none; z-index: 1999; }
         .sidebar-overlay.active { display: block; }
 
+        /* MODAL DETALLE DE PRODUCTO */
+        .pmodal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+            z-index: 2500; display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.4s var(--cb-premium);
+        }
+        .pmodal-overlay.active { display: flex; opacity: 1; }
+
+        .pmodal-card {
+            background: #ffffff; width: 92%; max-width: 900px;
+            border-radius: 20px; overflow: hidden; position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3); display: flex;
+            max-height: 88vh; animation: slideUpModal 0.4s var(--cb-premium);
+        }
+
+        @keyframes slideUpModal {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .pmodal-close {
+            position: absolute; top: 18px; right: 20px; width: 38px; height: 38px;
+            background: #f1f3f5; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; cursor: pointer; font-size: 18px; z-index: 10;
+            transition: var(--transition-smooth);
+        }
+        .pmodal-close:hover { background: #000; color: #fff; }
+
+        .pmodal-media-side {
+            flex: 1.1; background: #f7f7f9; padding: 25px;
+            display: flex; flex-direction: column; gap: 15px;
+            justify-content: center; border-right: 1px solid #edf2f7;
+        }
+
+        .pmodal-main-media {
+            width: 100%; height: 320px; border-radius: 12px;
+            overflow: hidden; background: #fff; display: flex;
+            align-items: center; justify-content: center; position: relative;
+        }
+
+        .pmodal-main-media img, .pmodal-main-media iframe, .pmodal-main-media video {
+            width: 100%; height: 100%; object-fit: cover; border: none;
+        }
+
+        .pmodal-thumbs {
+            display: flex; gap: 12px; justify-content: center;
+        }
+
+        .pmodal-thumb {
+            width: 65px; height: 65px; border-radius: 8px; overflow: hidden;
+            border: 2px solid transparent; cursor: pointer; transition: var(--transition-smooth);
+            background: #fff; position: relative;
+        }
+
+        .pmodal-thumb.active { border-color: #000; }
+        .pmodal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .pmodal-thumb .thumb-video-icon {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: #fff; background: rgba(0,0,0,0.6); width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center; font-size: 16px;
+        }
+
+        .pmodal-info-side {
+            flex: 1; padding: 35px 30px; display: flex; flex-direction: column;
+            overflow-y: auto; justify-content: space-between;
+        }
+
+        .pmodal-category { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 8px; }
+        .pmodal-title { font-size: 24px; font-weight: 900; color: #000; line-height: 1.2; margin-bottom: 12px; }
+        .pmodal-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 20px; font-weight: 500; }
+        
+        .pmodal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+        .pmodal-tag { background: #f1f3f5; font-size: 10px; font-weight: 700; padding: 6px 12px; border-radius: 20px; text-transform: uppercase; }
+
+        .pmodal-price-box { margin-bottom: 25px; }
+        .pmodal-price { font-size: 26px; font-weight: 900; color: #000; }
+        .pmodal-subprice { font-size: 12px; color: #008a00; font-weight: 700; margin-top: 4px; }
+
+        .btn-pmodal-add {
+            background: #000; color: #fff; border: none; padding: 16px;
+            font-weight: 800; font-size: 12px; letter-spacing: 1px;
+            border-radius: 8px; cursor: pointer; text-transform: uppercase;
+            width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: var(--transition-smooth);
+        }
+        .btn-pmodal-add:hover { background: var(--neon-accent); color: #000; }
+
         /* CHECKOUT MODAL */
         .checkout-modal-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -1168,7 +1273,6 @@
             overflow-y: auto;
         }
 
-        /* Botón de cierre en checkout fácil de presionar en celular */
         .checkout-close-btn {
             position: absolute;
             top: 15px;
@@ -1223,7 +1327,6 @@
         .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px; }
         .form-field label { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #4a5568; }
         
-        /* Previene Zoom automático en celulares (font-size >= 16px) */
         .form-field input, .form-field select {
             padding: 12px 14px; 
             border: 1px solid #cbd5e0; 
@@ -1236,7 +1339,6 @@
         }
         .form-field input:focus, .form-field select:focus { border-color: #000; }
 
-        /* SECCIÓN TARJETA DINÁMICA */
         .card-details-box {
             background: #f8f9fa;
             border: 1px solid #e2e8f0;
@@ -1320,6 +1422,11 @@
 
             .floating-buttons-container { bottom: 20px; left: 15px; gap: 12px; }
             .whatsapp-float, .cart-float { width: 50px; height: 50px; font-size: 22px; }
+
+            .pmodal-card { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+            .pmodal-media-side { border-right: none; border-bottom: 1px solid #edf2f7; padding: 15px; }
+            .pmodal-main-media { height: 220px; }
+            .pmodal-info-side { padding: 20px; }
         }
     </style>
 </head>
@@ -1378,12 +1485,12 @@
                 <div class="slide slide-blue active">
                     <div class="slide-content">
                         <div class="slide-image-container">
-                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Auriculares Inalámbricos HD" class="floating-shoe">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Auriculares Inalámbricos HD" class="floating-shoe" onclick="abrirDetalleProducto(101)">
                         </div>
                         <div class="slide-text">
                             <h2>TECH & SOUND</h2>
                             <p>AUDIO DE ALTA DEFINICIÓN</p>
-                            <button class="btn-shop" onclick="agregarProductoAlCarrito('Auriculares Premium Bluetooth ANC', 89999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop')">Descubrir</button>
+                            <button class="btn-shop" onclick="abrirDetalleProducto(101)">Descubrir</button>
                         </div>
                     </div>
                 </div>
@@ -1463,7 +1570,7 @@
             <h2 class="section-title">Productos Destacados</h2>
             <div class="premium-display-grid">
                 
-                <div class="premium-card">
+                <div class="premium-card" onclick="abrirDetalleProducto(101)">
                     <div class="premium-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" alt="Auriculares Bluetooth Pro">
                         <span class="badge-premium-tag">Tech Drop</span>
@@ -1480,14 +1587,14 @@
                                 <p class="price">$89.999,00</p>
                                 <p class="sub-price">6 cuotas s/interés de $14.999,83</p>
                             </div>
-                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Auriculares Premium Bluetooth ANC', 89999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop')">
+                            <button class="btn-shop-premium" onclick="event.stopPropagation(); agregarProductoAlCarrito('Auriculares Premium Bluetooth ANC', 89999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop')">
                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="premium-card">
+                <div class="premium-card" onclick="abrirDetalleProducto(102)">
                     <div class="premium-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" alt="Smartwatch Minimalista">
                         <span class="badge-premium-tag">Trending</span>
@@ -1504,7 +1611,7 @@
                                 <p class="price">$64.999,00</p>
                                 <p class="sub-price">6 cuotas s/interés de $10.833,16</p>
                             </div>
-                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('Smartwatch Smart-Sync Black Edition', 64999, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop')">
+                            <button class="btn-shop-premium" onclick="event.stopPropagation(); agregarProductoAlCarrito('Smartwatch Smart-Sync Black Edition', 64999, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop')">
                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
                             </button>
                         </div>
@@ -1518,15 +1625,15 @@
         <section class="shop-look-section reveal-element">
             <h2 class="section-title">Recomendación de la Semana</h2>
             <div class="look-container">
-                <div class="look-banner" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop');">
+                <div class="look-banner" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop'); cursor:pointer;" onclick="abrirDetalleProducto(103)">
                     <div class="hotspot hotspot-1" title="Ver producto"></div>
                 </div>
                 <div class="look-product-panel">
                     <h4>Bazar & Cuidados</h4>
-                    <h3>Humidificador Ultramoderno & Difusor Aromático</h3>
+                    <h3 style="cursor:pointer;" onclick="abrirDetalleProducto(103)">Humidificador Ultramoderno & Difusor Aromático</h3>
                     <p class="price" style="font-size:24px; margin-bottom:10px;">$32.500,00</p>
                     <p class="sub-price" style="margin-bottom:30px;">Llevatelo en 6 cuotas de $5.416,66</p>
-                    <button style="background:#000; color:#fff; padding:16px; border:none; font-weight:800; cursor:pointer; border-radius:4px;" onclick="agregarProductoAlCarrito('Humidificador Ultramoderno Difusor', 32500, 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop')">AÑADIR AL CARRITO</button>
+                    <button style="background:#000; color:#fff; padding:16px; border:none; font-weight:800; cursor:pointer; border-radius:4px;" onclick="abrirDetalleProducto(103)">VER DETALLES Y FOTOS</button>
                 </div>
             </div>
         </section>
@@ -1657,13 +1764,48 @@
             <button class="btn-checkout-start" id="btn-open-checkout">Iniciar Compra</button>
         </div>
     </div>
+
+    <!-- MODAL DETALLE DE PRODUCTO MULTIMEDIA -->
+    <div class="pmodal-overlay" id="product-detail-modal">
+        <div class="pmodal-card">
+            <div class="pmodal-close" onclick="cerrarModalProducto()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="pmodal-media-side">
+                <div class="pmodal-main-media" id="pmodal-main-view">
+                    <!-- Imagen o Video Grande -->
+                </div>
+                <div class="pmodal-thumbs" id="pmodal-thumbs-container">
+                    <!-- Miniaturas Dinámicas -->
+                </div>
+            </div>
+            <div class="pmodal-info-side">
+                <div>
+                    <span class="pmodal-category" id="pmodal-category">TECNOLOGÍA</span>
+                    <h2 class="pmodal-title" id="pmodal-title">Nombre del Producto</h2>
+                    <p class="pmodal-desc" id="pmodal-desc">Descripción extensa del producto...</p>
+                    <div class="pmodal-tags" id="pmodal-tags">
+                        <!-- Badges -->
+                    </div>
+                </div>
+                <div>
+                    <div class="pmodal-price-box">
+                        <div class="pmodal-price" id="pmodal-price">$0,00</div>
+                        <div class="pmodal-subprice" id="pmodal-subprice">6 cuotas sin interés</div>
+                    </div>
+                    <button class="btn-pmodal-add" id="pmodal-add-btn">
+                        AÑADIR A LA BOLSA <i class="fa-solid fa-bag-shopping"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- MODAL DE CHECKOUT MULTI-PASO -->
     <div class="checkout-modal-overlay" id="checkout-modal">
         <div class="checkout-card">
-            <!-- Cruz para cancelar/cerrar responsiva -->
             <div class="checkout-close-btn" id="close-checkout">
                 <i class="fa-solid fa-xmark"></i>
             </div>
@@ -1704,7 +1846,6 @@
                     </select>
                 </div>
 
-                <!-- DESPLEGABLE DINÁMICO SI SE SELECCIONA OTRA TARJETA -->
                 <div class="card-details-box" id="card-details-box">
                     <div class="form-field">
                         <label>Número de Tarjeta</label>
@@ -1768,6 +1909,100 @@
         // Cargar carrito desde LocalStorage
         let carrito = JSON.parse(localStorage.getItem('luna_cart')) || [];
 
+        // BASE DE DATOS EXTENDIDA DE PRODUCTOS (CON MULTIMEDIA Y DESCRIPCIONES)
+        const dbProductos = [
+            { 
+                id: 101, 
+                categoria: "TECNOLOGÍA", 
+                nombre: "Auriculares Premium Bluetooth ANC", 
+                precio: 89999, 
+                tag: "Tech Drop", 
+                img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
+                fotosExtra: [
+                    "https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=600&auto=format&fit=crop"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0",
+                descripcion: "Sumérgete en un sonido envolvente con cancelación activa de ruido (ANC). Diseñados ergonómicamente con almohadillas Memory Foam para horas de uso continuado, ofreciendo agudos cristalinos y graves profundos.",
+                specs: ["Cancelación de Ruido", "Batería 30hs", "Audio HD"] 
+            },
+            { 
+                id: 102, 
+                categoria: "TECNOLOGÍA", 
+                nombre: "Smartwatch Smart-Sync Black Edition", 
+                precio: 64999, 
+                tag: "Trending", 
+                img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop",
+                fotosExtra: [
+                    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?q=80&w=600&auto=format&fit=crop"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0",
+                descripcion: "Monitorea tu salud y rendimiento deportivo en tiempo real con la pantalla AMOLED Ultra HD. Compatible con iOS y Android, resistencia al agua IP68 y GPS de alta precisión integrado.",
+                specs: ["AMOLED", "Resistente al Agua", "Smart Sync"] 
+            },
+            { 
+                id: 103, 
+                categoria: "HOGAR & DECÓ", 
+                nombre: "Humidificador Ultramoderno Difusor", 
+                precio: 32500, 
+                tag: "Home Essentials", 
+                img: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop",
+                fotosExtra: [
+                    "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=600&auto=format&fit=crop"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0",
+                descripcion: "Transforma la atmósfera de tu ambiente con vapor ultrasónico silencioso e iluminación LED ambiental de 7 tonos. Ideal para aceites esenciales, meditación y humidificación de aire.",
+                specs: ["Luces LED RGB", "Silencioso", "Aromaterapia"] 
+            },
+            { 
+                id: 104, 
+                categoria: "ACCESORIOS", 
+                nombre: "Lentes de Sol Vintage Y2K Polarizados", 
+                precio: 18900, 
+                tag: "Style Drop", 
+                img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600&auto=format&fit=crop",
+                fotosExtra: [
+                    "https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600&auto=format&fit=crop"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0",
+                descripcion: "Diseño urbano icónico con marco de acetato premium ultra liviano. Cristales polarizados con máxima protección UV400 para cuidar tus ojos con todo el estilo retro futurista.",
+                specs: ["Protección UV400", "Marco Ultraligero", "Estuche Incluido"] 
+            },
+            { 
+                id: 105, 
+                categoria: "BAZAR", 
+                nombre: "Botella Térmica de Acero Inoxidable 750ml", 
+                precio: 22400, 
+                tag: "Bazar Top", 
+                img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=600&auto=format&fit=crop",
+                fotosExtra: [
+                    "https://images.unsplash.com/photo-1589365278144-c9e705f843ba?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0",
+                descripcion: "Doble pared de aislamiento al vacío que mantiene líquidos helados por 24 hs o calientes por 12 hs. Construida en acero 18/8 libre de BPA, 100% hermética y resistente a golpes.",
+                specs: ["Frio 24hs / Calor 12hs", "Libre de BPA", "Anti-derrames"] 
+            },
+            { 
+                id: 106, 
+                categoria: "CUIDADO PERSONAL", 
+                nombre: "Kit Skincare Massage Roller & Facial Care", 
+                precio: 28900, 
+                tag: "Beauty Line", 
+                img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=600&auto=format&fit=crop",
+                fotosExtra: [
+                    "https://images.unsplash.com/photo-1512290900676-26c2a7259a41?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0",
+                descripcion: "Set de masaje facial elaborado con piedra Jade natural. Estimula la circulación sanguínea, reduce arrugas y mejora la absorción de tus sérums e hidratantes favoritos.",
+                specs: ["Piedra Jade Natural", "Revitalizante", "Ergonómico"] 
+            }
+        ];
+
         function guardarCarritoEnStorage() {
             localStorage.setItem('luna_cart', JSON.stringify(carrito));
         }
@@ -1783,7 +2018,6 @@
 
             // Controles de Carrito Lateral
             const cartTrigger = document.getElementById("cart-trigger");
-            const cartSidebar = document.getElementById("cart-sidebar");
             const closeCart = document.getElementById("close-cart");
             const overlay = document.getElementById("sidebar-overlay");
             const accountTrigger = document.getElementById("account-trigger");
@@ -1794,6 +2028,7 @@
             
             overlay.addEventListener("click", () => { 
                 cerrarCarrito();
+                cerrarModalProducto();
                 document.getElementById("checkout-modal").classList.remove("active");
             });
 
@@ -1884,7 +2119,6 @@
                 const address = document.getElementById("chk-address").value;
                 const method = paymentSelect.options[paymentSelect.selectedIndex].text;
 
-                // Validación simple de tarjeta si la eligió
                 if(paymentSelect.value === "card") {
                     const cardNum = document.getElementById("card-number").value;
                     const cardExpiry = document.getElementById("card-expiry").value;
@@ -1915,7 +2149,7 @@
                 document.getElementById(`step-ind-${to}`).classList.add("active");
             }
 
-            // FINALIZAR PEDIDO CON MERCADO PAGO / BACKEND
+            // FINALIZAR PEDIDO
             document.getElementById("btn-finish-order").addEventListener("click", async () => {
                 const clienteData = {
                     nombre: document.getElementById("chk-name").value,
@@ -1990,15 +2224,6 @@
             }
 
             // CATÁLOGO DINÁMICO
-            const dbProductos = [
-                { id: 101, categoria: "TECNOLOGÍA", nombre: "Auriculares Premium Bluetooth ANC", precio: 89999, tag: "Tech Drop", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop", specs: ["Cancelación de Ruido", "Batería 30hs", "Audio HD"] },
-                { id: 102, categoria: "TECNOLOGÍA", nombre: "Smartwatch Smart-Sync Black Edition", precio: 64999, tag: "Trending", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop", specs: ["AMOLED", "Resistente al Agua", "Smart Sync"] },
-                { id: 103, categoria: "HOGAR & DECÓ", nombre: "Humidificador Ultramoderno Difusor", precio: 32500, tag: "Home Essentials", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop", specs: ["Luces LED RGB", "Silencioso", "Aromaterapia"] },
-                { id: 104, categoria: "ACCESORIOS", nombre: "Lentes de Sol Vintage Y2K Polarizados", precio: 18900, tag: "Style Drop", img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600&auto=format&fit=crop", specs: ["Protección UV400", "Marco Ultraligero", "Estuche Incluido"] },
-                { id: 105, categoria: "BAZAR", nombre: "Botella Térmica de Acero Inoxidable 750ml", precio: 22400, tag: "Bazar Top", img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=600&auto=format&fit=crop", specs: ["Frio 24hs / Calor 12hs", "Libre de BPA", "Anti-derrames"] },
-                { id: 106, categoria: "CUIDADO PERSONAL", nombre: "Kit Skincare Massage Roller & Facial Care", precio: 28900, tag: "Beauty Line", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=600&auto=format&fit=crop", specs: ["Piedra Jade Natural", "Revitalizante", "Ergonómico"] }
-            ];
-
             const homeView = document.getElementById("home-view");
             const catalogView = document.getElementById("catalog-view");
             const catalogTitle = document.getElementById("catalog-title");
@@ -2027,7 +2252,7 @@
                     } else {
                         productosFiltrados.forEach((prod, index) => {
                             const cardHtml = `
-                                <div class="premium-card reveal-element" style="transition-delay: ${index * 100}ms">
+                                <div class="premium-card reveal-element" style="transition-delay: ${index * 100}ms" onclick="abrirDetalleProducto(${prod.id})">
                                     <div class="premium-img-wrapper">
                                         <img src="${prod.img}" alt="${prod.nombre}">
                                         <span class="badge-premium-tag">${prod.tag}</span>
@@ -2042,7 +2267,7 @@
                                                 <p class="price">$${prod.precio.toLocaleString('es-AR')},00</p>
                                                 <p class="sub-price">6 cuotas s/interés de $${Math.round(prod.precio / 6).toLocaleString('es-AR')},00</p>
                                             </div>
-                                            <button class="btn-shop-premium" onclick="agregarProductoAlCarrito('${prod.nombre}', ${prod.precio}, '${prod.img}')">
+                                            <button class="btn-shop-premium" onclick="event.stopPropagation(); agregarProductoAlCarrito('${prod.nombre}', ${prod.precio}, '${prod.img}')">
                                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
                                             </button>
                                         </div>
@@ -2088,6 +2313,79 @@
                 }
             });
         });
+
+        // FUNCIONES DEL MODAL DE DETALLE DE PRODUCTO
+        function abrirDetalleProducto(id) {
+            const producto = dbProductos.find(p => p.id === id);
+            if(!producto) return;
+
+            document.getElementById("pmodal-category").innerText = producto.categoria;
+            document.getElementById("pmodal-title").innerText = producto.nombre;
+            document.getElementById("pmodal-desc").innerText = producto.descripcion;
+            document.getElementById("pmodal-price").innerText = `$${producto.precio.toLocaleString('es-AR')},00`;
+            document.getElementById("pmodal-subprice").innerText = `6 cuotas sin interés de $${Math.round(producto.precio / 6).toLocaleString('es-AR')},00`;
+
+            const tagsContainer = document.getElementById("pmodal-tags");
+            tagsContainer.innerHTML = producto.specs.map(s => `<span class="pmodal-tag">${s}</span>`).join('');
+
+            // Cargar Vista Principal
+            const mainView = document.getElementById("pmodal-main-view");
+            mainView.innerHTML = `<img src="${producto.img}" alt="${producto.nombre}">`;
+
+            // Cargar Miniaturas
+            const thumbsContainer = document.getElementById("pmodal-thumbs-container");
+            thumbsContainer.innerHTML = `
+                <div class="pmodal-thumb active" onclick="cambiarMediaModal(this, 'img', '${producto.img}')">
+                    <img src="${producto.img}">
+                </div>
+            `;
+
+            producto.fotosExtra.forEach((f) => {
+                thumbsContainer.innerHTML += `
+                    <div class="pmodal-thumb" onclick="cambiarMediaModal(this, 'img', '${f}')">
+                        <img src="${f}">
+                    </div>
+                `;
+            });
+
+            if(producto.video) {
+                thumbsContainer.innerHTML += `
+                    <div class="pmodal-thumb" onclick="cambiarMediaModal(this, 'video', '${producto.video}')">
+                        <img src="${producto.img}">
+                        <div class="thumb-video-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                `;
+            }
+
+            // Asignar botón de agregar
+            const addBtn = document.getElementById("pmodal-add-btn");
+            addBtn.onclick = () => {
+                agregarProductoAlCarrito(producto.nombre, producto.precio, producto.img);
+                cerrarModalProducto();
+            };
+
+            document.getElementById("product-detail-modal").classList.add("active");
+            document.getElementById("sidebar-overlay").classList.add("active");
+        }
+
+        function cambiarMediaModal(thumbElement, tipo, url) {
+            document.querySelectorAll(".pmodal-thumb").forEach(t => t.classList.remove("active"));
+            thumbElement.classList.add("active");
+
+            const mainView = document.getElementById("pmodal-main-view");
+            if(tipo === 'img') {
+                mainView.innerHTML = `<img src="${url}" alt="Producto">`;
+            } else if(tipo === 'video') {
+                mainView.innerHTML = `<iframe src="${url}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+            }
+        }
+
+        function cerrarModalProducto() {
+            document.getElementById("product-detail-modal").classList.remove("active");
+            document.getElementById("sidebar-overlay").classList.remove("active");
+            // Limpiar iframe para detener la reproducción si hay video
+            document.getElementById("pmodal-main-view").innerHTML = "";
+        }
 
         // FUNCIONES DE CONTROL DEL CARRITO Y VISIBILIDAD
         function abrirCarrito() {
@@ -2171,7 +2469,6 @@
                     `;
                 });
                 
-                // Muestra el carrito flotante persistente al agregar productos
                 if(floatCartBtn) floatCartBtn.classList.add("visible");
             }
 
