@@ -144,20 +144,6 @@
             padding: 18px 20px;
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Botón Menú Hamburguesa para Móvil */
-        .menu-toggle {
-            display: none;
-            font-size: 22px;
-            cursor: pointer;
-            color: #000000;
-        }
-
         .logo {
             font-size: 30px;
             font-weight: 900;
@@ -251,7 +237,7 @@
         }
 
         /* ==========================================================================
-           NAV MENU MULTIRRUBRO Y MENÚ LATERAL (DRAWER)
+           NAV MENU MULTIRRUBRO
            ========================================================================== */
         .nav-menu ul {
             display: flex;
@@ -317,52 +303,6 @@
         .nav-item.sale-badge a {
             color: #ffffff;
             background-color: #ff2a6d;
-        }
-
-        /* Menú Lateral Desplegable Mobile (Drawer) */
-        .mobile-nav-drawer {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 280px;
-            height: 100vh;
-            background: #ffffff;
-            z-index: 2100;
-            box-shadow: 10px 0 30px rgba(0,0,0,0.15);
-            transition: left 0.4s var(--cb-premium);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mobile-nav-drawer.open {
-            left: 0;
-        }
-
-        .mobile-nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #edf2f7;
-            margin-bottom: 20px;
-        }
-
-        .mobile-nav-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .mobile-nav-list li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: 700;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            display: block;
-            padding: 8px 0;
         }
 
         /* ==========================================================================
@@ -799,6 +739,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .premium-total-label {
+            font-size: 10px;
+            font-weight: 800;
+            color: #a0aec0;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
         }
 
         .btn-shop-premium {
@@ -1255,19 +1204,23 @@
         .btn-step-next:hover { background: var(--neon-accent); color: #000; }
 
         /* ==========================================================================
-           OPTIMIZACIÓN RESPONSIVA Y MÓVIL
+           OPTIMIZACIÓN RESPONSIVA
            ========================================================================== */
         @media (max-width: 768px) {
             body, html { position: relative; overflow-x: hidden; }
             .header-container { padding: 12px 15px; flex-wrap: wrap; gap: 12px; }
-            .menu-toggle { display: block; } /* Mostrar Hamburguesa */
             .logo { font-size: 24px; letter-spacing: -1px; }
             .search-bar { order: 3; width: 100%; }
             .search-bar input { padding: 10px 40px 10px 14px; font-size: 12px; }
             .header-actions { gap: 15px; }
             .action-item span { display: none; }
 
-            .nav-menu { display: none; } /* Ocultar menú superior horizontal en móvil */
+            .nav-menu ul {
+                justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 5px 10px; scrollbar-width: none;
+            }
+            .nav-menu ul::-webkit-scrollbar { display: none; }
+            .nav-item { padding: 10px 12px; flex-shrink: 0; }
+            .nav-item a { font-size: 11px; white-space: nowrap; }
 
             .slider-container { height: auto; min-height: auto; padding: 40px 0; }
             .slide { position: relative; height: auto; min-height: auto; opacity: 1; visibility: visible; display: none; }
@@ -1313,23 +1266,6 @@
         <div class="preloader-logo">LUNA</div>
     </div>
 
-    <!-- MENÚ LATERAL DESPLEGABLE MÓVIL (DRAWER) -->
-    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-        <div class="mobile-nav-header">
-            <span style="font-weight: 900; letter-spacing: 1px;">MENÚ</span>
-            <i class="fa-solid fa-xmark" id="close-mobile-nav" style="font-size: 20px; cursor: pointer;"></i>
-        </div>
-        <ul class="mobile-nav-list">
-            <li><a href="#" class="m-link" onclick="mostrarCategoria('LANZAMIENTOS'); cerrarMobileNav();">LANZAMIENTOS</a></li>
-            <li><a href="#" class="m-link" onclick="mostrarCategoria('TECNOLOGÍA'); cerrarMobileNav();">TECNOLOGÍA</a></li>
-            <li><a href="#" class="m-link" onclick="mostrarCategoria('HOGAR & DECÓ'); cerrarMobileNav();">HOGAR & DECÓ</a></li>
-            <li><a href="#" class="m-link" onclick="mostrarCategoria('ACCESORIOS'); cerrarMobileNav();">ACCESORIOS</a></li>
-            <li><a href="#" class="m-link" onclick="mostrarCategoria('CUIDADO PERSONAL'); cerrarMobileNav();">CUIDADO PERSONAL</a></li>
-            <li><a href="#" class="m-link" onclick="mostrarCategoria('BAZAR'); cerrarMobileNav();">BAZAR</a></li>
-            <li><a href="#" class="m-link" style="color:#ff2a6d;" onclick="mostrarCategoria('HASTA 50% OFF'); cerrarMobileNav();">HASTA 50% OFF</a></li>
-        </ul>
-    </div>
-
     <div class="top-bar">
         <div class="top-bar-carousel">
             <span>6 CUOTAS SIN INTERÉS CON MERCADO PAGO • 15% OFF EN TRANSFERENCIA • ENVÍOS MULTIRRUBRO A TODO EL PAÍS •&nbsp;</span>
@@ -1339,10 +1275,7 @@
 
     <header class="main-header">
         <div class="header-container">
-            <div class="header-left">
-                <i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>
-                <a href="#top" class="logo">LUNA</a>
-            </div>
+            <a href="#top" class="logo">LUNA</a>
             
             <div class="search-bar">
                 <input type="text" id="main-search-input" placeholder="Busca tecnología, hogar, accesorios o bazar...">
@@ -1394,7 +1327,7 @@
             </div>
         </section>
 
-        <!-- CARRUSEL CUOTAS Y BANCOS -->
+        <!-- CARRUSLE CUOTAS Y BANCOS -->
         <section class="installments-section reveal-element">
             <div class="carousel-wrapper">
                 <button class="carousel-arrow left-arrow" id="inst-prev"><i class="fa-solid fa-chevron-left"></i></button>
@@ -1544,7 +1477,7 @@
                 <h2 id="catalog-title" style="font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px;">Sección</h2>
                 
                 <div style="margin-bottom: 25px; border-bottom: 1px solid #edf2f7; padding-bottom: 20px;">
-                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Categorías Rápidas</h4>
+                    <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Categoría Rápidas</h4>
                     <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" checked style="margin-right: 8px;"> Ver Todos</label>
                     <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; cursor: pointer;"><input type="checkbox" style="margin-right: 8px;"> Ofertas Semanales</label>
                 </div>
@@ -1695,29 +1628,6 @@
                         <option value="card">Tarjeta de Crédito / Débito Directa</option>
                     </select>
                 </div>
-
-                <!-- SUB-FORMULARIO DE TARJETA DIRECTA (Dinámico) -->
-                <div id="direct-card-form" style="display: none; margin-top: 15px; border-top: 1px solid #edf2f7; padding-top: 15px;">
-                    <div class="form-field">
-                        <label>Número de Tarjeta</label>
-                        <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
-                    </div>
-                    <div class="form-field">
-                        <label>Nombre del Titular</label>
-                        <input type="text" id="card-name" placeholder="Como figura en la tarjeta">
-                    </div>
-                    <div class="form-group-grid">
-                        <div class="form-field">
-                            <label>Vencimiento</label>
-                            <input type="text" id="card-exp" placeholder="MM/AA" maxlength="5">
-                        </div>
-                        <div class="form-field">
-                            <label>CVC / CVV</label>
-                            <input type="password" id="card-cvc" placeholder="123" maxlength="4">
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-field">
                     <label>Cuotas</label>
                     <select>
@@ -1738,7 +1648,6 @@
                 <div style="background:#f7f7f9; padding:20px; border-radius:8px; margin-bottom:20px;">
                     <p style="font-size:12px; font-weight:700; color:#555;" id="summary-client">Cliente: -</p>
                     <p style="font-size:12px; font-weight:700; color:#555;" id="summary-address">Envío: -</p>
-                    <p style="font-size:12px; font-weight:700; color:#555;" id="summary-payment">Método: -</p>
                     <div style="border-top:1px dashed #ccc; margin:10px 0;"></div>
                     <div style="display:flex; justify-content:space-between; font-weight:900; font-size:16px;">
                         <span>TOTAL A PAGAR:</span>
@@ -1763,12 +1672,6 @@
             localStorage.setItem('luna_cart', JSON.stringify(carrito));
         }
 
-        // LÓGICA DE MENÚ LATERAL MÓVIL
-        function cerrarMobileNav() {
-            document.getElementById("mobile-nav-drawer").classList.remove("open");
-            document.getElementById("sidebar-overlay").classList.remove("active");
-        }
-
         document.addEventListener("DOMContentLoaded", () => {
             // Cargar estado inicial del carrito
             actualizarCarritoUI();
@@ -1787,42 +1690,16 @@
             const accountTrigger = document.getElementById("account-trigger");
             const loginModal = document.getElementById("login-modal");
 
-            // Menú Hamburguesa Móvil
-            const menuToggle = document.getElementById("menu-toggle");
-            const mobileNavDrawer = document.getElementById("mobile-nav-drawer");
-            const closeMobileNavBtn = document.getElementById("close-mobile-nav");
-
-            menuToggle.addEventListener("click", () => {
-                mobileNavDrawer.classList.add("open");
-                overlay.classList.add("active");
-            });
-
-            closeMobileNavBtn.addEventListener("click", cerrarMobileNav);
-
             cartTrigger.addEventListener("click", () => { cartSidebar.classList.add("open"); overlay.classList.add("active"); });
             closeCart.addEventListener("click", () => { cartSidebar.classList.remove("open"); overlay.classList.remove("active"); });
-            
             overlay.addEventListener("click", () => { 
                 cartSidebar.classList.remove("open"); 
-                mobileNavDrawer.classList.remove("open");
                 overlay.classList.remove("active"); 
                 document.getElementById("checkout-modal").classList.remove("active");
             });
 
             accountTrigger.addEventListener("click", (e) => { e.stopPropagation(); loginModal.classList.toggle("active"); });
             document.addEventListener("click", () => loginModal.classList.remove("active"));
-
-            // Desplegar Formulario de Tarjeta Directa según opción seleccionada
-            const paymentMethodSelect = document.getElementById("payment-method-select");
-            const directCardForm = document.getElementById("direct-card-form");
-
-            paymentMethodSelect.addEventListener("change", (e) => {
-                if(e.target.value === "card") {
-                    directCardForm.style.display = "block";
-                } else {
-                    directCardForm.style.display = "none";
-                }
-            });
 
             // Carrusel de Cuotas
             const instCarousel = document.getElementById("inst-carousel");
@@ -1890,16 +1767,9 @@
                 const name = document.getElementById("chk-name").value;
                 const lastname = document.getElementById("chk-lastname").value;
                 const address = document.getElementById("chk-address").value;
-                const method = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
-
-                if (paymentMethodSelect.value === "card") {
-                    const cardNum = document.getElementById("card-number").value;
-                    if(!cardNum) { alert("Ingresá el número de tarjeta."); return; }
-                }
 
                 document.getElementById("summary-client").innerText = `Cliente: ${name} ${lastname}`;
                 document.getElementById("summary-address").innerText = `Envío: ${address}`;
-                document.getElementById("summary-payment").innerText = `Método: ${method}`;
                 document.getElementById("summary-total").innerText = `$${calcularTotal().toLocaleString('es-AR')},00`;
 
                 switchStep(2, 3);
@@ -1923,8 +1793,7 @@
                     apellido: document.getElementById("chk-lastname").value,
                     email: document.getElementById("chk-email").value,
                     direccion: document.getElementById("chk-address").value,
-                    cp: document.getElementById("chk-zip").value,
-                    metodoPago: paymentMethodSelect.value
+                    cp: document.getElementById("chk-zip").value
                 };
 
                 if (!clienteData.nombre || !clienteData.email) {
@@ -1957,7 +1826,7 @@
                     if (data.init_point) {
                         window.location.href = data.init_point;
                     } else {
-                        alert("Pedido confirmado. Nos pondremos en contacto para completar la operación.");
+                        alert("Ocurrió un inconveniente al generar la pasarela de pago.");
                     }
 
                 } catch (error) {
@@ -2061,7 +1930,7 @@
                 }, 350);
             };
 
-            // Listeners Menu Desktop
+            // Listeners Menu
             document.getElementById("nav-tecnologia").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("TECNOLOGÍA"); });
             document.getElementById("nav-hogar").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("HOGAR & DECÓ"); });
             document.getElementById("nav-accesorios").addEventListener("click", (e) => { e.preventDefault(); mostrarCategoria("ACCESORIOS"); });
