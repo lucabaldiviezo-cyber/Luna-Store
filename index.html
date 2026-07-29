@@ -2334,7 +2334,7 @@
                                         <div class="premium-action-bar">
                                             <div>
                                                 <p class="price">$${prod.precio.toLocaleString('es-AR')},00</p>
-                                                <p class="sub-price">6 cuotas s/interés de $${Math.round(prod.precio / 6).toLocaleString('es-AR')},00</p>
+                                                <p class="sub-price">Impuestos incluidos</p>
                                             </div>
                                             <button class="btn-shop-premium" onclick="event.stopPropagation(); agregarProductoAlCarrito('${prod.nombre}', ${prod.precio}, '${prod.img}')">
                                                 COMPRAR <i class="fa-solid fa-bag-shopping"></i>
@@ -2392,7 +2392,7 @@
             document.getElementById("pmodal-title").innerText = producto.nombre;
             document.getElementById("pmodal-desc").innerText = producto.descripcion;
             document.getElementById("pmodal-price").innerText = `$${producto.precio.toLocaleString('es-AR')},00`;
-            document.getElementById("pmodal-subprice").innerText = `6 cuotas sin interés de $${Math.round(producto.precio / 6).toLocaleString('es-AR')},00`;
+            document.getElementById("pmodal-subprice").innerText = `Impuestos incluidos`;
 
             const tagsContainer = document.getElementById("pmodal-tags");
             tagsContainer.innerHTML = producto.specs.map(s => `<span class="pmodal-tag">${s}</span>`).join('');
