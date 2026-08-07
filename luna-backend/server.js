@@ -65,7 +65,7 @@ app.post('/api/webhook-pago', async (req, res) => {
             // Enviar mail transaccional automático
             await resend.emails.send({
                 from: 'Luna Store <onboarding@resend.dev>',
-                to: ['tu-email@gmail.com'], // Aquí va el correo destino
+                to: ['infolunastore@aol.com'], // Aquí va el correo destino
                 subject: '¡Nueva compra confirmada en LUNA!',
                 html: `
                     <h2>¡Gracias por tu compra!</h2>
